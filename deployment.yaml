@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wordpress
+spec:
+  selector:
+    matchLabels:
+      app: wordpress
+  template:
+    metadata:
+      labels:
+        app: wordpress
+    spec:
+      serviceAccountName: newsvcaccount
+      containers:
+      - name: wordpress
+        image: danahmed/cogent:v2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: wordpress-svc
+spec:
+  selector:
+    app: wordpress
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30036
+    protocol: TCP
