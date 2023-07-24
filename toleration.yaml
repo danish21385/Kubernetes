@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vlconnect
+spec:
+  selector:
+    matchLabels:
+      app: vlconnect
+  template:
+    metadata:
+      labels:
+        app: vlconnect
+    spec:
+      containers:
+      - name: vlconnect
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      tolerations:
+      - key: "env"
+        operator: "Equal"
+        value: "stage"
+        effect: "NoSchedule"
+      
