@@ -1,0 +1,10 @@
+k run echobusyb -it --image busybox --rm --restart Never -- /bin/sh -c "echo hello world"
+
+install metric server to get pod metrics
+k apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+then run
+k get 
+
+expose deployment with nodeport
+
+k expose deployment nginx-random --name nginx-random-svc --port 80 --target-port 80 --type NodePort

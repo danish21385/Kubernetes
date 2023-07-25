@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clipsal
+spec:
+  selector:
+    matchLabels:
+      app: clipsal
+  template:
+    metadata:
+      labels:
+        app: clipsal
+    spec:
+      containers:
+      - name: clipsal
+        image: nginx
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
