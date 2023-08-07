@@ -1,0 +1,29 @@
+# Node Selector
+# Used three nodes in k8s, labeled one as apptype=backend, scheduled the deployment, all replicas were launched on
+# the same node. Deleted that node using k delete node command, all pods crashed, labelled node2 with the same lable
+# which is apptype=backend, all the pods automatically rescheduled on that pod.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      nodeSelector:
+       apptype: backend
+      containers:
+      - name: myapp
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+ 

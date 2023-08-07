@@ -1,0 +1,38 @@
+# Soft Affinity
+# testing this pod to check node affinity. The node is assigned a lable of region=us-east1
+# while this pod has the preffered affinity to be scheduled on nodes with region=us-east2
+# since this is a soft affinity (preffered) therefore k8s allows this to run on the node with unmatching lables
+
+# Hard Affinity
+# tested this pod before with requiredDuringSchedulingIgnoredDuringExecution
+# the pod failed to launch
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 80
+  affinity:
+   nodeAffinity:
+     preferredDuringSchedulingIgnoredDuringExecution:
+     - weight: 1
+       preference:
+        matchExpressions:
+        - key: region
+          operator: In
+          values:
+          - us-east2
+
+    
+        
