@@ -1,0 +1,8 @@
+NAME                          READY   STATUS    RESTARTS   AGE     LABELS
+specdeploy-5c4dc86758-7jrpf   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-7skr5   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-9xghq   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-gdcmm   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-pz9zp   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-sfs2v   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758
+specdeploy-5c4dc86758-z8sww   1/1     Running   0          2m46s   app_runtime_stage=dev,pod-template-hash=5c4dc86758

@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-app
+spec:
+  selector:
+    matchLabels:
+      app: cnc
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cnc
+    spec:
+      containers:
+      - name: cnc
+        image: nginx:1.11.10-alpine
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        env:
+         - name: var1
+           valueFrom:
+            secretKeyRef:
+             name: mysecret
+             key: user
+        volumeMounts:
+         - name: varformsecret
+           mountPath: /home
+         #- name: temp
+          # mountPath: /usr
+         - name: tempnode
+           mountPath: /mnt
+      volumes:
+       - name: varformsecret
+         secret:
+          secretName: mysecret
+      # - name: temp
+       #  emptyDir: {}
+       - name: tempnode
+         hostPath:
+          path: /srv/app-data

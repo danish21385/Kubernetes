@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 3    
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        volumeMounts:
+         - name: shared
+           mountPath: /usr/share/nginx/html
+      initContainers:
+       - name: initcontainer1
+         image: busybox:latest
+         command: ['sh', '-c', 'ping 4.2.2.2 -c 1']
+         volumeMounts:
+           - name: shared
+             mountPath: /home    
+      volumes:
+       - name: shared
+         hostPath:
+           path:  /srv/app-data

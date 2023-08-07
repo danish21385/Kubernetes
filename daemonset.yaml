@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+ name: webdaemon
+ namespace: engineering
+ labels:
+  name: webdaemon
+spec:
+ selector:
+  matchLabels:
+   name: webdaemon
+ template:
+  metadata:
+    labels:
+     name: webdaemon
+  spec:
+   containers: 
+    - name: nginx
+      image: nginx

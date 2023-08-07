@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app_runtime_stage: dev
+  name: specdeploy
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app_runtime_stage: dev
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app_runtime_stage: dev
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+status: {}

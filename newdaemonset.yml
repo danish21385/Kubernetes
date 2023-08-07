@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+ name: webdev
+spec:
+ selector:
+  matchLabels:
+   name: webdev
+ template:
+  metadata: 
+   labels:
+    name: webdev
+  spec:
+   containers:
+    - name: nginx
+      image: nginx

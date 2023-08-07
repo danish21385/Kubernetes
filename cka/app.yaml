@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "7"
+    kubernetes.io/change-cause: kubectl set image deploy app1 nginx=nginx:1.11.13-alpine
+      --record=true
+  creationTimestamp: "2023-08-05T09:50:16Z"
+  generation: 4
+  labels:
+    app: app1
+  name: app1
+  namespace: default
+  resourceVersion: "1808"
+  uid: 2e83ed41-a51c-41a2-9443-ef81be136e83
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 3
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: app1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app1
+    spec:
+      containers:
+      - image: nginx:1.11.13-alpine
+        imagePullPolicy: IfNotPresent
+        name: nginx
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 3
+  conditions:
+  - lastTransitionTime: "2023-08-05T09:50:35Z"
+    lastUpdateTime: "2023-08-05T09:50:35Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-08-05T09:50:16Z"
+    lastUpdateTime: "2023-08-05T10:05:42Z"
+    message: ReplicaSet "app1-5dccf8d6c8" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 4
+  readyReplicas: 3
+  replicas: 3
+  updatedReplicas: 3
