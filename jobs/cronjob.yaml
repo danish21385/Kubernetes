@@ -17,3 +17,5 @@ spec:
             - -c
             - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
+  successfulJobsHistoryLimit: 5
+  concurrencyPolicy: Forbid
