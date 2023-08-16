@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: RoleBinding-read-pods
+  namespace: engineering
+subjects:
+- kind: ServiceAccount
+  name: pod-reader # "name" is case sensitive
+  namespace: engineering
+roleRef:
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role #this must be Role or ClusterRole
+  name: Role-Pod-Reader # this must match the name of the Role or ClusterRole you wish to bind to
+  apiGroup: rbac.authorization.k8s.io

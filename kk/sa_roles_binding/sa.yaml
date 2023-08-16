@@ -1,0 +1,4 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: pink-sa-cka24-arch

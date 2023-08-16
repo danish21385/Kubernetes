@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: myjob
+spec:
+  completions: 3
+  parallelism: 3
+  backoffLimit: 2
+  ttlSecondsAfterFinished: 20
+  template:
+    spec:
+      containers:
+      - name: printdate
+        image: busybox
+        command: ["/bin/sh",  "-c", "date"]
+      restartPolicy: Never

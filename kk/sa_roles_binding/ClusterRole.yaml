@@ -1,0 +1,8 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: pink-role-cka24-arch
+rules:
+- apiGroups: [""]     #applies to core api groups
+  resources: ["*"]  # all resources i.e. pods, deployments, etc
+  verbs: ["*"] # all actions i.e. get, update, list, watch etc

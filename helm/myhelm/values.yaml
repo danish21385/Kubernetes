@@ -1,0 +1,2 @@
+appname: myapp
+image: nginx:alpine3.17-slim

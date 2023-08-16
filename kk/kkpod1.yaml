@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod1
+spec:
+  containers:
+   - name: pod1
+     image: nginx
+     env:
+      - name: db_username
+        valueFrom:
+         secretKeyRef:
+          name: hondamena
+          key: dbuser
+      - name: db_password
+        valueFrom:
+          secretKeyRef:
+           name: hondamena
+           key: dbpassword
