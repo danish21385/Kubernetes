@@ -16,6 +16,6 @@ spec:
             - /bin/sh
             - -c
             - date; echo Hello from the Kubernetes cluster
-          restartPolicy: OnFailure
-  successfulJobsHistoryLimit: 5
-  concurrencyPolicy: Forbid
+          restartPolicy: OnFailure  # this is usually used for a cronjob
+  successfulJobsHistoryLimit: 5 # number of completed jobs you want. Type k get pods to get history
+  concurrencyPolicy: Forbid     # Wait until the first pod completes its execution
