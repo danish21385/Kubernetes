@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quote
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: quoteapp
+  template:
+    metadata:
+      labels:
+        app: quoteapp
+    spec:
+      containers:
+      - name: quoteapp
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        volumeMounts:
+         - name: defaultpage 
+           mountPath: /usr/share/nginx/html
+      volumes:
+       - name: defaultpage
+         configMap:
+          name: quoteconfigmap 

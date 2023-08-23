@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  serviceName: mysqlsvc
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysqldb
+  template:
+    metadata:
+      labels:
+        app: mysqldb
+    spec:
+      containers:
+        - name: mysqlsbcontainer
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: shared-pvc
+              mountPath: /var/lib/mysql  # Mount path in the pod
+          envFrom:
+           - secretRef:
+              name: cred1
+  volumeClaimTemplates:
+    - metadata:
+        name: shared-pvc
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: standard
+        resources:
+          requests:
+            storage: 10Mi  # Adjust the size as needed
