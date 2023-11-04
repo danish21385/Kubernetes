@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: troubleshooting-pod
+spec:
+  containers:
+  - name: troubleshooting-container
+    image: alpine
+    command:
+      - sleep
+      - "3600"

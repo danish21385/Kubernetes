@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web1
+  name: web1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web1
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: web1
+    spec:
+      containers:
+      - image: danahmed/mig
+        name: nginx
+      #   volumeMounts:
+      #     - name: website-content
+      #       mountPath: /usr/share/nginx/html
+      # volumes:
+      #  - name: website-content
+      #    configMap:
+      #     name: website-content

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: website-content
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Sample Static Website</title>
+    </head>
+    <body>
+      <h1>Welcome to My Sample Static Website</h1>
+      <p>This is a simple example of a static website served by Nginx in Kubernetes.</p>
+    </body>
+    </html>

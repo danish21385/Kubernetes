@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Migration Instructions</title>
+</head>
+<body>
+    <h1>Website Migration Instructions</h1>
+    <p>This document lists the steps that need to be taken to copy valuelinksoftware.com website from the preview environment to the live environment.</p>
+    
+    <h2>Step 1: Backup Preview Site</h2>
+    <ol>
+        <li>Login to wp-admin of <a href="http://preview2.valuelinksoftware.com" target="_blank">preview2.valuelinksoftware.com</a></li>
+        <li>Take a backup of the preview2.valuelinksoftware.com database using the wp migrate plugin.</li>
+        <li>Login to wp-admin and go to Plugins > wp-migrate.</li>
+        <li>Enable the plugin if it is not activated.</li>
+        <li>Click on "Export Database," replace the URL and path with the live domain URL and path, and then click "Export Database."</li>
+        <li>Extract the downloaded database.</li>
+        <li>Rename the database with a specific version number, e.g., <code>preview2.valuelinksoftware.com-1.1.sql</code>.</li>
+        <li>Zip and download site content.</li>
+        <li>SSH into <code>preview2.valuelinksoftware.com</code>.</li>
+        <li>Change directory to <code>/var/www/preview2.valuelinksoftware.com</code>.</li>
+        <li>Create a tar.gz file: <code>tar –czf preview2.valuelinksoftware.com.tar.gz *</code></li>
+        <li>Download the zip file to your local machine, and rename it to <code>preview2.valuelinksoftware.com-1.1</code>.</li>
+    </ol>
+    
+    <h2>Step 2: Create a New Database in Azure</h2>
+    <ol>
+        <li>Log in to Azure and switch to the <code>Xoopahoutlook.onmicrosoft.com</code> subscription.</li>
+        <li>Navigate to Azure Database for MySQL servers > <code>xpsites-eus-mysql-server</code> > Databases, and click "Add."</li>
+        <li>Create a new database with an incremental version number, e.g., <code>valuelinksoftware-1-1</code>.</li>
+    </ol>
+    
+    <h2>Step 3: Upload the Database to Live Server</h2>
+    <ol>
+        <li>Login to the live valuelinksoftware Linux VM using an FTP client (e.g., FileZilla).</li>
+        <li>Navigate to the <code>/tmp</code> directory.</li>
+    </ol>
+</body>
+</html>
