@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Website Migration Instructions</title>
+    <title>Welcome to Our Website</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+        h1 {
+            font-size: 2em;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Website Migration Instructions</h1>
-    <p>This document lists the steps that need to be taken to copy valuelinksoftware.com website from the preview environment to the live environment.</p>
-    
-    <h2>Step 1: Backup Preview Site</h2>
-    <ol>
-        <li>Login to wp-admin of <a href="http://preview2.valuelinksoftware.com" target="_blank">preview2.valuelinksoftware.com</a></li>
-        <li>Take a backup of the preview2.valuelinksoftware.com database using the wp migrate plugin.</li>
-        <li>Login to wp-admin and go to Plugins > wp-migrate.</li>
-        <li>Enable the plugin if it is not activated.</li>
-        <li>Click on "Export Database," replace the URL and path with the live domain URL and path, and then click "Export Database."</li>
-        <li>Extract the downloaded database.</li>
-        <li>Rename the database with a specific version number, e.g., <code>preview2.valuelinksoftware.com-1.1.sql</code>.</li>
-        <li>Zip and download site content.</li>
-        <li>SSH into <code>preview2.valuelinksoftware.com</code>.</li>
-        <li>Change directory to <code>/var/www/preview2.valuelinksoftware.com</code>.</li>
-        <li>Create a tar.gz file: <code>tar –czf preview2.valuelinksoftware.com.tar.gz *</code></li>
-        <li>Download the zip file to your local machine, and rename it to <code>preview2.valuelinksoftware.com-1.1</code>.</li>
-    </ol>
-    
-    <h2>Step 2: Create a New Database in Azure</h2>
-    <ol>
-        <li>Log in to Azure and switch to the <code>Xoopahoutlook.onmicrosoft.com</code> subscription.</li>
-        <li>Navigate to Azure Database for MySQL servers > <code>xpsites-eus-mysql-server</code> > Databases, and click "Add."</li>
-        <li>Create a new database with an incremental version number, e.g., <code>valuelinksoftware-1-1</code>.</li>
-    </ol>
-    
-    <h2>Step 3: Upload the Database to Live Server</h2>
-    <ol>
-        <li>Login to the live valuelinksoftware Linux VM using an FTP client (e.g., FileZilla).</li>
-        <li>Navigate to the <code>/tmp</code> directory.</li>
-    </ol>
+    <header>
+        <h1>Welcome to Our Website</h1>
+    </header>
+    <main>
+        <h2>About Us</h2>
+        <p>
+            We are a creative and passionate team dedicated to providing you with valuable information and experiences. Our website is your gateway to a world of knowledge, entertainment, and inspiration.
+        </p>
+        <h2>Explore Our Content</h2>
+        <p>
+            Our website offers a diverse range of content, from informative articles and tutorials to captivating images and videos. Whether you're here to learn something new or simply relax and enjoy multimedia content, we have something for everyone.
+        </p>
+        <h2>Contact Us</h2>
+        <p>
+            We value your feedback and suggestions. If you have any questions, comments, or ideas to share, please don't hesitate to <a href="contact.html">contact us</a>. We'd love to hear from you!
+        </p>
+    </main>
 </body>
 </html>

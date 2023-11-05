@@ -1,9 +1,0 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: external
-spec:
-  type: ExternalName
-  externalName: ponggame.org
-  ports:
-  - port: 80
