@@ -27,3 +27,20 @@ spec:
   resources:
     requests:
       storage: 50Gi
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-managed-disk
+spec:
+  containers:
+    - name: app-container
+      image: nginx
+      volumeMounts:
+        - mountPath: "/mnt/data"
+          name: managed-disk-storage
+  volumes:
+    - name: managed-disk-storage
+      persistentVolumeClaim:
+        claimName: managed-disk-pvc
